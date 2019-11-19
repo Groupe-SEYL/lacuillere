@@ -17,6 +17,17 @@ public class Menu implements Serializable {
     public Menu() {
     }
 
+    public Menu(String name, String description, Dish entree, Dish mainCourse, Dish dessert, Drink drink) {
+        this.name = name;
+        this.description = description;
+        this.entree = entree;
+        this.mainCourse = mainCourse;
+        this.dessert = dessert;
+        this.drink = drink;
+        this.totalPrice = entree.getPrice() + mainCourse.getPrice() + dessert.getPrice() + drink.getPrice();
+
+    }
+
     public Long getId() {
         return id;
     }
@@ -70,8 +81,8 @@ public class Menu implements Serializable {
     }
 
     public void setTotalPrice(float totalPrice) {
-        this.totalPrice = entree.getPrice() + mainCourse.getPrice() + dessert.getPrice();
         this.totalPrice = totalPrice;
+
     }
 
     public Drink getDrink() {
