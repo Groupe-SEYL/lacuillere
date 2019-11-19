@@ -1,8 +1,11 @@
 package com.seyl.lacuillere.beans;
 
+import javax.persistence.Entity;
+import java.io.Serializable;
 import java.util.List;
 
-public class Restaurant {
+@Entity
+public class Restaurant implements Serializable {
     private Long id;
     private String name;
     private String description;

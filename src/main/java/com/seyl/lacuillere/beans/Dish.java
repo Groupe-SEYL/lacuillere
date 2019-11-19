@@ -1,6 +1,10 @@
 package com.seyl.lacuillere.beans;
 
-public class Dish {
+import javax.persistence.Entity;
+import java.io.Serializable;
+
+
+public class Dish extends Food implements Serializable {
     private Long id;
     private String name;
     private String description;
