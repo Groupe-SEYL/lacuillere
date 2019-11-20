@@ -7,7 +7,8 @@ import java.util.List;
 
 public interface RestaurantRepository  extends CrudRepository<Restaurant, Long> {
 
-    List<Restaurant> saveAll();
-    Restaurant getById();
-    Restaurant getByName();
+    List<Restaurant> getAll();
+    Restaurant getById(Long id);
+    Restaurant getByName(String name);
+
 }
