@@ -1,13 +1,18 @@
 package com.seyl.lacuillere;
 
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class LacuillereApplication {
+public class LacuillereApplication implements CommandLineRunner {
 
     public static void main(String[] args) {
         SpringApplication.run(LacuillereApplication.class, args);
     }
 
+    @Override
+    public void run(String... args) throws Exception {
+
+    }
 }
