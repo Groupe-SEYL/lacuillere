@@ -8,6 +8,7 @@ import java.util.List;
 
 public interface MenuRepository extends CrudRepository<Menu, Long> {
 
-        List<Menu> saveAll();
+        List<Menu> getAll();
+
 
 }

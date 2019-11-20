@@ -18,7 +18,7 @@ public class RestaurantServiceImpl implements RestaurantService{
     @Override
     public List getListRestaurant() {
         List<Restaurant> listRestaurant = new ArrayList<>();
-        listRestaurant = (List<Restaurant>) restaurantRepository.saveAll();
+        listRestaurant = (List<Restaurant>) restaurantRepository.getAll();
         return listRestaurant;
     }
 

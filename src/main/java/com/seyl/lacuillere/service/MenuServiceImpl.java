@@ -15,7 +15,7 @@ public class MenuServiceImpl implements MenuService {
     @Override
     public List getListMenu() {
         List<Menu> listMenu = new ArrayList<>();
-        listMenu = (List<Menu>) menuRepository.saveAll();
+        listMenu = (List<Menu>) menuRepository.getAll();
         return listMenu;
     }
 
