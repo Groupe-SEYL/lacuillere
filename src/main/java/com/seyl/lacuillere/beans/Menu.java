@@ -12,23 +12,10 @@ public class Menu implements Serializable {
     private Long id;
     private String name;
     private String description;
-
-    @OneToOne
-    @JoinColumn(name = "food_id")
-    private Dish entree;
-
-    @OneToOne
-    @JoinColumn(name = "food_id")
-    private Dish mainCourse;
-
-    @OneToOne
-    @JoinColumn(name = "food_id")
-    private Dish dessert;
-
-    @OneToOne
-    @JoinColumn(name = "food_id")
-    private Drink drink;
-
+    private String entree;
+    private String mainCourse;
+    private String dessert;
+    private String drink;
     private float totalPrice;
 
 
@@ -36,15 +23,13 @@ public class Menu implements Serializable {
     public Menu() {
     }
 
-    public Menu(String name, String description, Dish entree, Dish mainCourse, Dish dessert, Drink drink) {
-        this.name = name;
+    public Menu(String description, String entree, String mainCourse, String dessert, String drink, float totalPrice) {
         this.description = description;
         this.entree = entree;
         this.mainCourse = mainCourse;
         this.dessert = dessert;
         this.drink = drink;
-        this.totalPrice = entree.getPrice() + mainCourse.getPrice() + dessert.getPrice() + drink.getPrice();
-
+        this.totalPrice = totalPrice;
     }
 
     public Long getId() {
@@ -71,27 +56,27 @@ public class Menu implements Serializable {
         this.description = description;
     }
 
-    public Dish getEntree() {
+    public String getEntree() {
         return entree;
     }
 
-    public void setEntree(Dish entree) {
+    public void setEntree(String entree) {
         this.entree = entree;
     }
 
-    public Dish getMainCourse() {
+    public String getMainCourse() {
         return mainCourse;
     }
 
-    public void setMainCourse(Dish mainCourse) {
+    public void setMainCourse(String mainCourse) {
         this.mainCourse = mainCourse;
     }
 
-    public Dish getDessert() {
+    public String getDessert() {
         return dessert;
     }
 
-    public void setDessert(Dish dessert) {
+    public void setDessert(String dessert) {
         this.dessert = dessert;
     }
 
@@ -104,11 +89,11 @@ public class Menu implements Serializable {
 
     }
 
-    public Drink getDrink() {
+    public String getDrink() {
         return drink;
     }
 
-    public void setDrink(Drink drink) {
+    public void setDrink(String drink) {
         this.drink = drink;
     }
 }
