@@ -1,10 +1,14 @@
 package com.seyl.lacuillere.service;
 
-import com.seyl.lacuillere.restcontroller.MenuRestController;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-public class MenuService {
+import java.util.List;
 
-    @Autowired
-    MenuRestController menuRestController;
+@Service
+public interface MenuService <Menu> {
+    List<Menu> getListMenu();
+
+    void addMenu();
+
+    void deleteMenu();
 }
