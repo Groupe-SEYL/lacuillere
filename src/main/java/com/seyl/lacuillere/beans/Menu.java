@@ -9,6 +9,8 @@ public class Menu implements Serializable {
 
     @javax.persistence.Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @ManyToOne
+    @JoinColumn(name="Restaurant_id")
     private Long id;
     private String name;
     private String description;

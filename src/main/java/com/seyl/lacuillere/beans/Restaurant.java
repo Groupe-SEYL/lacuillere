@@ -14,8 +14,7 @@ public class Restaurant implements Serializable {
     private String name;
     private String description;
 
-    @OneToMany (fetch = FetchType.EAGER)
-    @JoinColumn(name = "menu_id")
+    @OneToMany (mappedBy = "id")
     private List<Menu> menu;
     private String address;
     private int starsNumber;
