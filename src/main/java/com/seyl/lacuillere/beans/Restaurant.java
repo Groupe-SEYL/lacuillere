@@ -1,14 +1,21 @@
 package com.seyl.lacuillere.beans;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
 @Entity
+@Table(name="Restaurant")
 public class Restaurant implements Serializable {
+
+    @javax.persistence.Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String description;
+
+    @OneToMany (fetch = FetchType.EAGER)
+    @JoinColumn(name = "menu_id")
     private List<Menu> menu;
     private String address;
     private int starsNumber;

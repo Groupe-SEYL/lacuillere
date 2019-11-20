@@ -1,18 +1,37 @@
 package com.seyl.lacuillere.beans;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
+@Table(name = "Menu")
 public class Menu implements Serializable {
+
+    @javax.persistence.Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String description;
+
+    @OneToOne
+    @JoinColumn(name = "food_id")
     private Dish entree;
+
+    @OneToOne
+    @JoinColumn(name = "food_id")
     private Dish mainCourse;
+
+    @OneToOne
+    @JoinColumn(name = "food_id")
     private Dish dessert;
-    private float totalPrice;
+
+    @OneToOne
+    @JoinColumn(name = "food_id")
     private Drink drink;
+
+    private float totalPrice;
+
+
 
     public Menu() {
     }
