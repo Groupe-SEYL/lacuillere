@@ -1,5 +1,6 @@
 package com.seyl.lacuillere.service;
 
+import com.seyl.lacuillere.beans.Menu;
 import com.seyl.lacuillere.beans.Restaurant;
 import com.seyl.lacuillere.repository.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,21 +24,23 @@ public class RestaurantServiceImpl implements RestaurantService{
     }
 
     @Override
-    public Object addRestaurant(Object o) {
-        return null;
+    public void addRestaurant(String name, String description, String address, int starsNumber) {
+        restaurantRepository.save(new Restaurant(name, description, address, starsNumber));
     }
-
-
-    public Restaurant addRestaurant(Restaurant restaurant) {
-        Restaurant newRestaurant = addRestaurant(restaurant);
-        return (Restaurant) restaurantRepository.save(newRestaurant);
-    }
-
-
-
 
     @Override
     public void deleteRestaurant(Long id) {
         restaurantRepository.deleteById(id);
     }
+
+    @Override
+    public void addMenuToRestaurant(Menu menu) {
+    }
+
+    @Override
+    public void editStar(int nbstar) {
+
+    }
+
+
 }

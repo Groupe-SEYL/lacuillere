@@ -14,12 +14,37 @@ public class Restaurant implements Serializable {
     private String name;
     private String description;
 
-    @OneToMany (mappedBy = "id")
-    private List<Menu> menu;
+    @ManyToMany
+    @JoinTable(name = "Restaurant_Menu",
+    joinColumns = @JoinColumn(name = "Restaurant_id", referencedColumnName = "id"),
+    inverseJoinColumns = @JoinColumn(name = "Menu_id", referencedColumnName = "id"))
+    private List<Menu> menus;
     private String address;
     private int starsNumber;
+    private float averagePrice;
 
     public Restaurant() {
+    }
+
+    public Restaurant(String name, String description, String address, int starsNumber) {
+        this.name = name;
+        this.description = description;
+        this.address = address;
+        this.starsNumber = starsNumber;
+        this.averagePrice=0;
+    }
+
+    public void addmenu(Menu menu){
+        this.menus.add(menu);
+        this.averagePrice+=menu.getTotalPrice();
+    }
+
+    public float getAveragePrice() {
+        return averagePrice;
+    }
+
+    public void setAveragePrice(float averagePrice) {
+        this.averagePrice = averagePrice;
     }
 
     public Long getId() {
@@ -47,11 +72,11 @@ public class Restaurant implements Serializable {
     }
 
     public List<Menu> getMenu() {
-        return menu;
+        return menus;
     }
 
     public void setMenu(List<Menu> menu) {
-        this.menu = menu;
+        this.menus = menu;
     }
 
     public String getAddress() {

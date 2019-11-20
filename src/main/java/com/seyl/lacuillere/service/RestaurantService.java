@@ -1,5 +1,6 @@
 package com.seyl.lacuillere.service;
 
+import com.seyl.lacuillere.beans.Menu;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -11,8 +12,14 @@ public interface RestaurantService <Restaurant> {
 
     List<Restaurant> getListRestaurant();
 
-    Restaurant addRestaurant(Restaurant restaurant);
+    void addRestaurant(String name, String description, String address, int starsNumber);
 
     void deleteRestaurant(Long id);
+
+    void addMenuToRestaurant(Menu menu);
+
+    void editStar(int nbstar);
+
+
 
 }

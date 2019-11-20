@@ -9,8 +9,6 @@ public class Menu implements Serializable {
 
     @javax.persistence.Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @ManyToOne
-    @JoinColumn(name="Restaurant_id")
     private Long id;
     private String name;
     private String description;
@@ -25,7 +23,8 @@ public class Menu implements Serializable {
     public Menu() {
     }
 
-    public Menu(String description, String entree, String mainCourse, String dessert, String drink, float totalPrice) {
+    public Menu(String name, String description, String entree, String mainCourse, String dessert, String drink, float totalPrice) {
+        this.name = name;
         this.description = description;
         this.entree = entree;
         this.mainCourse = mainCourse;

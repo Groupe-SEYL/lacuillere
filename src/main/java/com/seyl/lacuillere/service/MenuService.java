@@ -8,7 +8,6 @@ import java.util.List;
 public interface MenuService <Menu> {
     List<Menu> getListMenu();
 
-    void addMenu();
+    void addMenu(String name, String description, String entree, String mainCourse, String dessert, String drink, float totalPrice);
 
-    void deleteMenu();
 }

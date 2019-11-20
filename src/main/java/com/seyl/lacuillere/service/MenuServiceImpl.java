@@ -3,10 +3,12 @@ package com.seyl.lacuillere.service;
 import com.seyl.lacuillere.beans.Menu;
 import com.seyl.lacuillere.repository.MenuRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class MenuServiceImpl implements MenuService {
 
     @Autowired
@@ -15,17 +17,12 @@ public class MenuServiceImpl implements MenuService {
     @Override
     public List getListMenu() {
         List<Menu> listMenu = new ArrayList<>();
-        listMenu = (List<Menu>) menuRepository.getAll();
+        listMenu = (List<Menu>) menuRepository.findAll();
         return listMenu;
     }
 
     @Override
-    public void addMenu() {
-
-    }
-
-    @Override
-    public void deleteMenu() {
-
+    public void addMenu(String name, String description, String entree, String mainCourse, String dessert, String drink, float totalPrice) {
+        menuRepository.save(new Menu(name, description, entree, mainCourse, dessert, drink, totalPrice));
     }
 }

@@ -30,7 +30,7 @@ public class RestaurantRestController {
 
 
     @DELETE
-    @RequestMapping(value = "/restaurant/{id}")
+    @RequestMapping(value = "/restaurant/delet/{id}")
     public Response deleteRestaurant (@PathVariable("id") Long id){
         restaurantService.deleteRestaurant(id);
         return Response.status(Response.Status.NO_CONTENT).build();
@@ -40,9 +40,20 @@ public class RestaurantRestController {
     @PostMapping("/listRestaurant")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response addRestaurant(){
-        restaurantService.addRestaurant(addRestaurant());
+    public Response addRestaurant(@ModelAttribute("Restaurant") Restaurant restaurant){
+        restaurantService.addRestaurant(restaurant.getName(),
+                restaurant.getDescription(),
+                restaurant.getAddress(),
+                restaurant.getStarsNumber());
         return Response.status(Response.Status.CREATED).build();
+    }
+
+    @Path("/restaurant/addmenu/{id}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response addMenu(@RequestParam(value = "id_menu")  Long id){
+
+        return Response.status(Response.Status.ACCEPTED).build();
     }
 
 
