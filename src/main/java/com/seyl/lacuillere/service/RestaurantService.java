@@ -11,8 +11,8 @@ public interface RestaurantService <Restaurant> {
 
     List<Restaurant> getListRestaurant();
 
-    void addRestaurant();
+    Restaurant addRestaurant(Restaurant restaurant);
 
-    void deleteRestaurant();
+    void deleteRestaurant(Long id);
 
 }

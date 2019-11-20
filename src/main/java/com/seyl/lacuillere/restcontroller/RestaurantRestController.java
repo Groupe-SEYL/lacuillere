@@ -2,14 +2,8 @@ package com.seyl.lacuillere.restcontroller;
 
 import com.seyl.lacuillere.beans.Restaurant;
 import com.seyl.lacuillere.service.RestaurantService;
-import com.seyl.lacuillere.service.RestaurantServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -26,6 +20,7 @@ public class RestaurantRestController {
 
     List<Restaurant> listRestaurant = new ArrayList<>();
 
+
     @RequestMapping(value = "/displayRestaurant")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
@@ -34,10 +29,21 @@ public class RestaurantRestController {
     }
 
 
-//    @RequestMapping(value = "/restaurant/{id}", method = RequestMethod.DELETE)
-//    public ResponseEntity<Restaurant> delete(PathVariable("id") String id){
-//        listRestaurant.remove(id);
-//        return new ResponseEntity<>("Restaurant is deleted successfully", HttpStatus.OK);
-//    }
+    @DELETE
+    @RequestMapping(value = "/restaurant/{id}")
+    public Response deleteRestaurant (@PathVariable("id") Long id){
+        restaurantService.deleteRestaurant(id);
+        return Response.status(Response.Status.NO_CONTENT).build();
+    }
+
+
+    @PostMapping("/listRestaurant")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response addRestaurant(){
+        restaurantService.addRestaurant(addRestaurant());
+        return Response.status(Response.Status.CREATED).build();
+    }
+
 
 }

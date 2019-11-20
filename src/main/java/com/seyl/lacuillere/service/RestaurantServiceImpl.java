@@ -18,17 +18,26 @@ public class RestaurantServiceImpl implements RestaurantService{
     @Override
     public List getListRestaurant() {
         List<Restaurant> listRestaurant = new ArrayList<>();
-        listRestaurant = (List<Restaurant>) restaurantRepository.getAll();
+        listRestaurant = (List<Restaurant>) restaurantRepository.findAll();
         return listRestaurant;
     }
 
     @Override
-    public void addRestaurant() {
-
+    public Object addRestaurant(Object o) {
+        return null;
     }
 
-    @Override
-    public void deleteRestaurant() {
 
+    public Restaurant addRestaurant(Restaurant restaurant) {
+        Restaurant newRestaurant = addRestaurant(restaurant);
+        return (Restaurant) restaurantRepository.save(newRestaurant);
+    }
+
+
+
+
+    @Override
+    public void deleteRestaurant(Long id) {
+        restaurantRepository.deleteById(id);
     }
 }
