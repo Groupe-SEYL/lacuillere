@@ -24,8 +24,8 @@ public class RestaurantServiceImpl implements RestaurantService{
     }
 
     @Override
-    public void addRestaurant(String name, String description, String address, int starsNumber) {
-        restaurantRepository.save(new Restaurant(name, description, address, starsNumber));
+    public Restaurant addRestaurant(String name, String description, List<Menu> menus, String address, int starsNumber, float averagePrice) {
+        return restaurantRepository.save(new Restaurant(name, description, menus, address, starsNumber, averagePrice));
     }
 
     @Override
@@ -33,14 +33,7 @@ public class RestaurantServiceImpl implements RestaurantService{
         restaurantRepository.deleteById(id);
     }
 
-    @Override
-    public void addMenuToRestaurant(Menu menu) {
-    }
 
-    @Override
-    public void editStar(int nbstar) {
-
-    }
 
 
 }

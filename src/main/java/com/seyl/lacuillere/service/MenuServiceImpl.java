@@ -22,7 +22,7 @@ public class MenuServiceImpl implements MenuService {
     }
 
     @Override
-    public void addMenu(String name, String description, String entree, String mainCourse, String dessert, String drink, float totalPrice) {
-        menuRepository.save(new Menu(name, description, entree, mainCourse, dessert, drink, totalPrice));
+    public Menu addMenu(String name, String description, String entree, String mainCourse, String dessert, String drink, float totalPrice) {
+        return menuRepository.save(new Menu(name, description, entree, mainCourse, dessert, drink, totalPrice));
     }
 }
