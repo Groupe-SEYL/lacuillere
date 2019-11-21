@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/restaurants")
-@CrossOrigin(origins = "http://localhost:4242")
+//@CrossOrigin(origins = "http://localhost:4242")
 public class RestaurantRestController {
 
 
@@ -35,15 +35,21 @@ public class RestaurantRestController {
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public Restaurant addRestaurant(@RequestBody Restaurant restaurant) {
+        // Calcul average price for current restaurant
+//        float SPrice = 0;
+//        for (int i = 0; i < restaurant.getMenus().size(); i++) {
+//            SPrice += restaurant.getMenus().get(i).getTotalPrice();
+//        }
+//        restaurant.setAveragePrice(SPrice / restaurant.getMenus().size());
+
+        // Add and return new restaurant
         Restaurant r = restaurantService.addRestaurant(restaurant.getName(),
                 restaurant.getDescription(),
                 restaurant.getMenus(),
                 restaurant.getAddress(),
-                restaurant.getStarsNumber(),
-                restaurant.getAveragePrice());
-        for (int i = 0; i < restaurant.getMenus().size(); i++) {
-            System.out.println(restaurant.getMenus().get(i));
-        }
+                restaurant.getStarsNumber());
+
+
         return r;
     }
 
