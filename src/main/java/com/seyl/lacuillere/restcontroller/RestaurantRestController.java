@@ -36,15 +36,16 @@ public class RestaurantRestController {
     @CrossOrigin(origins = "http://localhost:4242")
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public Restaurant addRestaurant(@RequestBody Restaurant restaurant){
+        float SPrice=0;
         Restaurant r = restaurantService.addRestaurant(restaurant.getName(),
                 restaurant.getDescription(),
                 restaurant.getMenu(),
                 restaurant.getAddress(),
-                restaurant.getStarsNumber(),
-                restaurant.getAveragePrice());
+                restaurant.getStarsNumber());
         for(int i = 0; i<restaurant.getMenu().size();i++){
-            System.out.println(restaurant.getMenu().get(i));
+            SPrice+=restaurant.getMenu().get(i).getTotalPrice();
         }
+        r.setAveragePrice(SPrice/restaurant.getMenu().size());
         return r;
     }
 
