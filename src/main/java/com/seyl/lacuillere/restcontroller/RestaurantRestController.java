@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/restaurants")
+@CrossOrigin(origins = "http://localhost:4242")
 public class RestaurantRestController {
 
 
@@ -20,21 +20,21 @@ public class RestaurantRestController {
     List<Restaurant> listRestaurant = new ArrayList<>();
 
 
-    @CrossOrigin(origins = "http://localhost:4242")
-    @GetMapping
+
+    @GetMapping("/restaurants")
     public List<Restaurant> displayListRestaurant(){
         return (List<Restaurant>) restaurantService.getListRestaurant();
     }
 
 
-    @CrossOrigin(origins = "http://localhost:4242")
+
     @DeleteMapping(value = "/{id}")
     public void deleteRestaurant (@PathVariable("id") Long id){
         restaurantService.deleteRestaurant(id);
     }
 
-    @CrossOrigin(origins = "http://localhost:4242")
-    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+
+    @PostMapping("/newrestaurant")
     public Restaurant addRestaurant(@RequestBody Restaurant restaurant){
         float SPrice=0;
         Restaurant r = restaurantService.addRestaurant(restaurant.getName(),
