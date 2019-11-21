@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name="Restaurant")
+@Table(name = "Restaurant")
 public class Restaurant implements Serializable {
 
     @javax.persistence.Id
@@ -16,8 +16,9 @@ public class Restaurant implements Serializable {
 
     @ManyToMany
     @JoinTable(name = "Restaurant_Menu",
-    joinColumns = @JoinColumn(name = "Restaurant_id", referencedColumnName = "id"),
-    inverseJoinColumns = @JoinColumn(name = "Menu_id", referencedColumnName = "id"))
+            joinColumns = @JoinColumn(name = "Restaurant_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "Menu_id", referencedColumnName = "id"))
+
     private List<Menu> menus;
     private String address;
     private int starsNumber;
@@ -35,9 +36,9 @@ public class Restaurant implements Serializable {
         this.averagePrice = averagePrice;
     }
 
-    public void addmenu(Menu menu){
+    public void addmenu(Menu menu) {
         this.menus.add(menu);
-        this.averagePrice+=menu.getTotalPrice();
+        this.averagePrice += menu.getTotalPrice();
     }
 
     public float getAveragePrice() {
@@ -72,12 +73,12 @@ public class Restaurant implements Serializable {
         this.description = description;
     }
 
-    public List<Menu> getMenu() {
+    public List<Menu> getMenus() {
         return menus;
     }
 
-    public void setMenu(List<Menu> menu) {
-        this.menus = menu;
+    public void setMenus(List<Menu> menus) {
+        this.menus = menus;
     }
 
     public String getAddress() {

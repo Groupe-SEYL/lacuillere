@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/restaurants")
+@CrossOrigin(origins = "http://localhost:4242")
 public class RestaurantRestController {
 
 
@@ -20,30 +21,28 @@ public class RestaurantRestController {
     List<Restaurant> listRestaurant = new ArrayList<>();
 
 
-    @CrossOrigin(origins = "http://localhost:4242")
     @GetMapping
-    public List<Restaurant> displayListRestaurant(){
+    public List<Restaurant> displayListRestaurant() {
         return (List<Restaurant>) restaurantService.getListRestaurant();
     }
 
 
-    @CrossOrigin(origins = "http://localhost:4242")
     @DeleteMapping(value = "/{id}")
-    public void deleteRestaurant (@PathVariable("id") Long id){
+    public void deleteRestaurant(@PathVariable("id") Long id) {
         restaurantService.deleteRestaurant(id);
     }
 
-    @CrossOrigin(origins = "http://localhost:4242")
+
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Restaurant addRestaurant(@RequestBody Restaurant restaurant){
+    public Restaurant addRestaurant(@RequestBody Restaurant restaurant) {
         Restaurant r = restaurantService.addRestaurant(restaurant.getName(),
                 restaurant.getDescription(),
-                restaurant.getMenu(),
+                restaurant.getMenus(),
                 restaurant.getAddress(),
                 restaurant.getStarsNumber(),
                 restaurant.getAveragePrice());
-        for(int i = 0; i<restaurant.getMenu().size();i++){
-            System.out.println(restaurant.getMenu().get(i));
+        for (int i = 0; i < restaurant.getMenus().size(); i++) {
+            System.out.println(restaurant.getMenus().get(i));
         }
         return r;
     }
