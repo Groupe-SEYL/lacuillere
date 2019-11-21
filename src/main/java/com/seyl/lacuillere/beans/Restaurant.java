@@ -18,7 +18,6 @@ public class Restaurant implements Serializable {
     @JoinTable(name = "Restaurant_Menu",
             joinColumns = @JoinColumn(name = "Restaurant_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "Menu_id", referencedColumnName = "id"))
-
     private List<Menu> menus;
     private String address;
     private int starsNumber;
