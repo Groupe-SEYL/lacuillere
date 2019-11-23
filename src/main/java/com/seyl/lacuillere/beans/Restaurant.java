@@ -26,12 +26,13 @@ public class Restaurant implements Serializable {
     public Restaurant() {
     }
 
-    public Restaurant(String name, String description, List<Menu> menus, String address, int starsNumber) {
+    public Restaurant(String name, String description, List<Menu> menus, String address, int starsNumber, float averagePrice) {
         this.name = name;
         this.description = description;
         this.menus = menus;
         this.address = address;
         this.starsNumber = starsNumber;
+        this.averagePrice = averagePrice;
     }
 
     public void addmenu(Menu menu) {

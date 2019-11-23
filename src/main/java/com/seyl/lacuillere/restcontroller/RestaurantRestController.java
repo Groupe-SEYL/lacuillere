@@ -36,18 +36,19 @@ public class RestaurantRestController {
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public Restaurant addRestaurant(@RequestBody Restaurant restaurant) {
         // Calcul average price for current restaurant
-//        float SPrice = 0;
-//        for (int i = 0; i < restaurant.getMenus().size(); i++) {
-//            SPrice += restaurant.getMenus().get(i).getTotalPrice();
-//        }
-//        restaurant.setAveragePrice(SPrice / restaurant.getMenus().size());
+        float SPrice = 0;
+        for (int i = 0; i < restaurant.getMenus().size(); i++) {
+            SPrice += restaurant.getMenus().get(i).getTotalPrice();
+        }
+        restaurant.setAveragePrice(SPrice / restaurant.getMenus().size());
 
         // Add and return new restaurant
         Restaurant r = restaurantService.addRestaurant(restaurant.getName(),
                 restaurant.getDescription(),
                 restaurant.getMenus(),
                 restaurant.getAddress(),
-                restaurant.getStarsNumber());
+                restaurant.getStarsNumber(),
+                restaurant.getAveragePrice());
 
 
         return r;

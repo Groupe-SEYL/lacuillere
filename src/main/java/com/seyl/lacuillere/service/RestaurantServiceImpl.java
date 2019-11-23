@@ -25,9 +25,9 @@ public class RestaurantServiceImpl implements RestaurantService {
     }
 
     @Override
-    public Restaurant addRestaurant(String name, String description, List<Menu> menus, String address, int starsNumber) {
+    public Restaurant addRestaurant(String name, String description, List<Menu> menus, String address, int starsNumber, float avgprice) {
         List<Menu> savedMenus = (List<Menu>) menuRepository.saveAll(menus);
-        return restaurantRepository.save(new Restaurant(name, description, savedMenus, address, starsNumber));
+        return restaurantRepository.save(new Restaurant(name, description, savedMenus, address, starsNumber, avgprice));
     }
 
     @Override
