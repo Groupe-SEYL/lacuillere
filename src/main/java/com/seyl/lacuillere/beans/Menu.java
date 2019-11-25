@@ -7,7 +7,7 @@ import java.io.Serializable;
 @Table(name = "Menu")
 public class Menu implements Serializable {
 
-    @javax.persistence.Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;

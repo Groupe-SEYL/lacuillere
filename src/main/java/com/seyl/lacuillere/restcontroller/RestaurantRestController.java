@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@RequestMapping(value = "/restaurants")
 @CrossOrigin(origins = "http://localhost:4242")
 public class RestaurantRestController {
 
@@ -20,32 +21,35 @@ public class RestaurantRestController {
     List<Restaurant> listRestaurant = new ArrayList<>();
 
 
-
     @GetMapping("/restaurants")
-    public List<Restaurant> displayListRestaurant(){
+    public List<Restaurant> displayListRestaurant() {
         return (List<Restaurant>) restaurantService.getListRestaurant();
     }
 
-
-
     @DeleteMapping(value = "/{id}")
-    public void deleteRestaurant (@PathVariable("id") Long id){
+    public void deleteRestaurant(@PathVariable("id") Long id) {
         restaurantService.deleteRestaurant(id);
     }
 
 
     @PostMapping("/newrestaurant")
-    public Restaurant addRestaurant(@RequestBody Restaurant restaurant){
-        float SPrice=0;
+    public Restaurant addRestaurant(@RequestBody Restaurant restaurant) {
+        // Calcul average price for current restaurant
+        float SPrice = 0;
+        for (int i = 0; i < restaurant.getMenus().size(); i++) {
+            SPrice += restaurant.getMenus().get(i).getTotalPrice();
+        }
+        restaurant.setAveragePrice(SPrice / restaurant.getMenus().size());
+
+        // Add and return new restaurant
         Restaurant r = restaurantService.addRestaurant(restaurant.getName(),
                 restaurant.getDescription(),
-                restaurant.getMenu(),
+                restaurant.getMenus(),
                 restaurant.getAddress(),
-                restaurant.getStarsNumber());
-        for(int i = 0; i<restaurant.getMenu().size();i++){
-            SPrice+=restaurant.getMenu().get(i).getTotalPrice();
-        }
-        r.setAveragePrice(SPrice/restaurant.getMenu().size());
+                restaurant.getStarsNumber(),
+                restaurant.getAveragePrice());
+
+
         return r;
     }
 

@@ -13,7 +13,7 @@ import java.util.List;
 
 
 @RestController
-
+@CrossOrigin(origins = "http://localhost:4242")
 @RequestMapping("/menu")
 public class MenuRestController {
 
@@ -22,13 +22,13 @@ public class MenuRestController {
 
     List<Menu> listMenu =new ArrayList<>();
 
-    @CrossOrigin(origins = "http://localhost:4242")
+
     @GetMapping
     public List<Menu> listMenu(){
     return (List<Menu>) menuService.getListMenu();
     }
 
-    @CrossOrigin(origins = "http://localhost:4242")
+
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public Menu registerUser(@RequestBody Menu menu){
     Menu m = menuService.addMenu(menu.getName(),

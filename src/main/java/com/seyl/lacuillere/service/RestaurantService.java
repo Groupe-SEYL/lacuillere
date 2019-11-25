@@ -13,7 +13,7 @@ public interface RestaurantService {
 
     List<Restaurant> getListRestaurant();
 
-    Restaurant addRestaurant(String name, String description, List<Menu> menus, String address, int starsNumber);
+    Restaurant addRestaurant(String name, String description, List<Menu> menus, String address, int starsNumber, float avgprice);
 
     void deleteRestaurant(Long id);
 
