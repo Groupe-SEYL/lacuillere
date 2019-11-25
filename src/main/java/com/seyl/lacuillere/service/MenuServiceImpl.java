@@ -25,4 +25,10 @@ public class MenuServiceImpl implements MenuService {
     public Menu addMenu(String name, String description, String entree, String mainCourse, String dessert, String drink, float totalPrice) {
         return menuRepository.save(new Menu(name, description, entree, mainCourse, dessert, drink, totalPrice));
     }
+
+    @Override
+    public Menu getMenu(Long id) {
+        Menu menu = menuRepository.getById(id);
+        return menu;
+    }
 }

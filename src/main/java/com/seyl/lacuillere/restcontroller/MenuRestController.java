@@ -28,6 +28,11 @@ public class MenuRestController {
     return (List<Menu>) menuService.getListMenu();
     }
 
+    @GetMapping(value = "/{id}")
+    public Menu displayOneRestaurant(@PathVariable("id") Long id){
+        return menuService.getMenu(id);
+    }
+
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public Menu registerUser(@RequestBody Menu menu){
