@@ -91,8 +91,9 @@ public class RestaurantRestController {
     }
 
     @GetMapping(value = "/search/{name}")
-    public Restaurant searchOneRestaurant(@PathVariable("name") String name){
-        return restaurantService.findRestaurant(name);
+    public List<Restaurant> searchOneRestaurant(@PathVariable("name") String name){
+        List<Restaurant> searchResult= restaurantService.findRestaurant(name);
+        return searchResult;
     }
 
    /* @PatchMapping("/{id}")

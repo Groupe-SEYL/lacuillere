@@ -19,7 +19,7 @@ public interface RestaurantService {
 
     Restaurant getRestaurant(Long id);
 
-    Restaurant findRestaurant( String name);
+    List<Restaurant> findRestaurant( String name);
 
 
 
