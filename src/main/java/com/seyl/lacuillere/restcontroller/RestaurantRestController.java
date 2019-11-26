@@ -90,6 +90,11 @@ public class RestaurantRestController {
         return r;
     }
 
+    @GetMapping(value = "/search/{name}")
+    public Restaurant searchOneRestaurant(@PathVariable("name") String name){
+        return restaurantService.findRestaurant(name);
+    }
+
    /* @PatchMapping("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)

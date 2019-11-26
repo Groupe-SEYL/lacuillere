@@ -8,4 +8,5 @@ public interface RestaurantRepository  extends CrudRepository<Restaurant, Long> 
     Restaurant getById(Long id);
     Restaurant getByName(String name);
 
+    Restaurant findByName(String name);
 }
