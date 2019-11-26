@@ -11,6 +11,6 @@ public interface MenuService {
 
     Menu addMenu(String name, String description, String entree, String mainCourse, String dessert, String drink, float totalPrice);
 
-    Menu getMenu(Long id);
+    Menu getMenuById(Long id);
 
 }

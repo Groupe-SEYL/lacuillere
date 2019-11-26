@@ -11,4 +11,5 @@ public interface MenuRepository extends CrudRepository<Menu, Long> {
         Menu getById(Long id);
 
 
+
 }
