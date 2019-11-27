@@ -4,7 +4,6 @@ pipeline {
     stage('Initial') {
       steps {
         echo 'Hello World!'
-        waitForQualityGate(abortPipeline: true)
         error 'AN ERROR'
         sh '''#!/bin/bash
 
