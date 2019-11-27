@@ -28,8 +28,8 @@ public class LacuillereApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         menuService.addMenu("Burger","Un menu tout en légèreté","Salade","Burger", "Sunday", "Coca",12);
-        Menu Burger = menuService.getMenuById(1l);
-        List<Menu> LMB=new ArrayList<Menu>();
+        Menu Burger = menuService.getMenuById(1L);
+        List<Menu> LMB=new ArrayList<>();
         LMB.add(Burger);
         LMB.add(Burger);
         restaurantService.addRestaurant("Mc Speed King", "Venez gouter nos délicieux burggers",
@@ -37,8 +37,8 @@ public class LacuillereApplication implements CommandLineRunner {
 
 
         menuService.addMenu("M16", "menu Asiatique complet", "Sushi", "Fugu","Dango" ,"Sake", 15);
-        Menu M16 = menuService.getMenuById(2l);
-        List<Menu> LM16 =new ArrayList<Menu>();
+        Menu M16 = menuService.getMenuById(2L);
+        List<Menu> LM16 =new ArrayList<>();
         LM16.add(M16);
         LM16.add(M16);
         restaurantService.addRestaurant("Le palais Asiatique", "Changez de continent le temps d'un repas",
@@ -48,8 +48,8 @@ public class LacuillereApplication implements CommandLineRunner {
 
         menuService.addMenu("Le Niçois", "Menu à base de spécialité niçoise", "Beignets de fleurs de courgettes"
                 , "Petits farci nicois","Tourte de blette", "Château de Bellet", 50);
-        Menu menuNicois = menuService.getMenuById(3l);
-        List<Menu> LMN =new ArrayList<Menu>();
+        Menu menuNicois = menuService.getMenuById(3L);
+        List<Menu> LMN =new ArrayList<>();
         LMN.add(menuNicois);
         LMN.add(menuNicois);
         restaurantService.addRestaurant("La Mama", "Les meilleures spécialités niçoises à vil prix !!",
