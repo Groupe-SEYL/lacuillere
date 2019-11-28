@@ -20,9 +20,10 @@ public class RestaurantRestController {
     @Autowired
     private RestaurantService restaurantService;
 
+    @Autowired
     private MenuService menuService;
 
-    List<Restaurant> listRestaurant = new ArrayList<>();
+    private List<Restaurant> listRestaurant = new ArrayList<>();
 
 
     @GetMapping
