@@ -30,7 +30,7 @@ public class MenuRestController {
 
     @GetMapping(value = "/{id}")
     public Menu displayOneRestaurant(@PathVariable("id") Long id){
-        return menuService.getMenu(id);
+        return menuService.getMenuById(id);
     }
 
 

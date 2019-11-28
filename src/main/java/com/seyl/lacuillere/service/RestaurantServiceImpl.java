@@ -41,5 +41,10 @@ public class RestaurantServiceImpl implements RestaurantService {
         return restaurant;
     }
 
+    @Override
+    public List<Restaurant> findRestaurant(String name) {
+        return restaurantRepository.findAllByName(name);
+    }
+
 
 }
