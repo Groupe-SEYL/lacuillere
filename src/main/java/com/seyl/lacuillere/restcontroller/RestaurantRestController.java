@@ -13,8 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/restaurants")
-@CrossOrigin(origins = "http://localhost:4242")
+@RequestMapping(value = "/api/restaurants")
 public class RestaurantRestController {
 
 
@@ -25,11 +24,10 @@ public class RestaurantRestController {
     private MenuService menuService;
 
 
-
     private List<Restaurant> listRestaurant = new ArrayList<>();
 
 
-    @GetMapping("/restaurants")
+    @GetMapping
     public List<Restaurant> displayListRestaurant() {
         return (List<Restaurant>) restaurantService.getListRestaurant();
     }
@@ -40,7 +38,7 @@ public class RestaurantRestController {
     }
 
     @GetMapping(value = "/{id}")
-    public Restaurant displayOneRestaurant(@PathVariable("id") Long id){
+    public Restaurant displayOneRestaurant(@PathVariable("id") Long id) {
         return restaurantService.getRestaurant(id);
     }
 
@@ -54,7 +52,7 @@ public class RestaurantRestController {
             lm.add(menuService.getMenuById(rs.getMenus().get(i)));
             SPrice += lm.get(i).getTotalPrice();
         }
-        SPrice/=rs.getMenus().size();
+        SPrice /= rs.getMenus().size();
 //        Menu m1=new Menu("Ensemble de Pizza",
 //                "Pizza Partie",
 //                "Pizza Nutella",
@@ -93,7 +91,7 @@ public class RestaurantRestController {
                 rs.getAddress(),
                 rs.getStarsNumber(),
                 SPrice
-                );
+        );
         //40);
 
 
@@ -101,8 +99,8 @@ public class RestaurantRestController {
     }
 
     @GetMapping(value = "/search/{name}")
-    public List<Restaurant> searchOneRestaurant(@PathVariable("name") String name){
-        List<Restaurant> searchResult= restaurantService.findRestaurant(name);
+    public List<Restaurant> searchOneRestaurant(@PathVariable("name") String name) {
+        List<Restaurant> searchResult = restaurantService.findRestaurant(name);
         return searchResult;
     }
 
