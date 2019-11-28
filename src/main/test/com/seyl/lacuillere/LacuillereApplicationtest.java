@@ -1,4 +1,4 @@
 package com.seyl.lacuillere;
 
-public class LecuillereApplicationtest {
+public class LacuillereApplicationtest {
 }
