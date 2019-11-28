@@ -6,6 +6,7 @@ pipeline {
       steps {
         sh 'echo "hi"'
         sh 'mvn -B  -DskipTests clean package'
+        echo 'Build successful'
       }
     }
 
