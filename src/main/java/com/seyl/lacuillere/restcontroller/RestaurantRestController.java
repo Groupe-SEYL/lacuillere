@@ -26,11 +26,10 @@ public class RestaurantRestController {
     private List<Restaurant> listRestaurant = new ArrayList<>();
 
 
-    @GetMapping
+    @GetMapping("/restaurants")
     public List<Restaurant> displayListRestaurant() {
         return (List<Restaurant>) restaurantService.getListRestaurant();
     }
-
 
     @DeleteMapping(value = "/{id}")
     public void deleteRestaurant(@PathVariable("id") Long id) {
@@ -43,7 +42,7 @@ public class RestaurantRestController {
     }
 
 
-    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping("/newrestaurant")
     public Restaurant addRestaurant(@RequestBody Restaurant restaurant) {
         List<Menu> lm = new ArrayList<Menu>();
         Menu m1=new Menu("Ensemble de Pizza",
