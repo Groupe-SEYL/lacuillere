@@ -2,6 +2,7 @@ package com.seyl.lacuillere.restcontroller;
 
 import com.seyl.lacuillere.beans.Menu;
 import com.seyl.lacuillere.beans.Restaurant;
+import com.seyl.lacuillere.beans.RestaurantSend;
 import com.seyl.lacuillere.service.MenuService;
 import com.seyl.lacuillere.service.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,8 @@ public class RestaurantRestController {
     @Autowired
     private MenuService menuService;
 
+
+
     private List<Restaurant> listRestaurant = new ArrayList<>();
 
 
@@ -42,52 +45,59 @@ public class RestaurantRestController {
     }
 
 
-    @PostMapping("/newrestaurant")
-    public Restaurant addRestaurant(@RequestBody Restaurant restaurant) {
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    public Restaurant addRestaurant(@RequestBody RestaurantSend rs) {
         List<Menu> lm = new ArrayList<Menu>();
-        Menu m1=new Menu("Ensemble de Pizza",
-                "Pizza Partie",
-                "Pizza Nutella",
-                "Pizza vegi",
-                "Pizza carnivor",
-                "Cocacola",
-                30);
-        Menu m2=new Menu("Ensemble de plats japonais",
-                "Délices Japonnais",
-                "Dango",
-                "Sushi",
-                "Fugu",
-                "Sake",
-                50
-        );
-        lm.add(m1);
-        lm.add(m2);
+        float SPrice = 0;
+        for (int i = 0; i < rs.getMenus().size(); i++) {
+
+            lm.add(menuService.getMenuById(rs.getMenus().get(i)));
+            SPrice += lm.get(i).getTotalPrice();
+        }
+        SPrice/=rs.getMenus().size();
+//        Menu m1=new Menu("Ensemble de Pizza",
+//                "Pizza Partie",
+//                "Pizza Nutella",
+//                "Pizza vegi",
+//                "Pizza carnivor",
+//                "Cocacola",
+//                30);
+//        Menu m2=new Menu("Ensemble de plats japonais",
+//                "Délices Japonnais",
+//                "Dango",
+//                "Sushi",
+//                "Fugu",
+//                "Sake",
+//                50
+//        );
+//        lm.add(m1);
+//        lm.add(m2);
 
 
         // Calcul average price for current restaurant
-        float SPrice = 0;
+
 //        for (int i = 0; i < restaurant.getMenus().size(); i++) {
 //            SPrice += restaurant.getMenus().get(i).getTotalPrice();
 //        }
 //        restaurant.setAveragePrice(SPrice / restaurant.getMenus().size());
-
-        for (int i = 0; i < lm.size(); i++) {
-            SPrice += lm.get(i).getTotalPrice();
-        }
-        restaurant.setAveragePrice(SPrice / lm.size());
+//
+//        for (int i = 0; i < lm.size(); i++) {
+//            SPrice += lm.get(i).getTotalPrice();
+//        }
+//        restaurant.setAveragePrice(SPrice / lm.size());
 
         // Add and return new restaurant
-        Restaurant r = restaurantService.addRestaurant(restaurant.getName(),
-                restaurant.getDescription(),
+        Restaurant restaurant = restaurantService.addRestaurant(rs.getName(),
+                rs.getDescription(),
                 lm,
-                //restaurant.getMenus(),
-                restaurant.getAddress(),
-                restaurant.getStarsNumber(),
-                restaurant.getAveragePrice());
+                rs.getAddress(),
+                rs.getStarsNumber(),
+                SPrice
+                );
         //40);
 
 
-        return r;
+        return restaurant;
     }
 
     @GetMapping(value = "/search/{name}")
