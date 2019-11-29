@@ -3,6 +3,7 @@ package com.seyl.lacuillere.lacuillere.beans;
 import com.seyl.lacuillere.beans.RestaurantSend;
 import org.junit.Test;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
 public class RestaurantSendTest {
@@ -11,7 +12,7 @@ public class RestaurantSendTest {
 
     @Test
     public void testDefaultConstructor() {
-        assertNull(restaurantSend);
+        assertNotNull(restaurantSend);
     }
 
 }
