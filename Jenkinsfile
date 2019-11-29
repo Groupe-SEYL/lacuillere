@@ -19,8 +19,6 @@ pipeline {
       }
       steps {
         sh 'mvn test'
-        pwd(tmp: true)
-        error 'No test to build'
       }
     }
 
